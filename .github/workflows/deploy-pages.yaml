@@ -1,0 +1,25 @@
+name: Build and Deploy GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build-deploy-gh-pages:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and Deploy GitHub Pages
+        uses: glnk-dev/webapp@v0.1.2
+        with:
+          GLNK_USERNAME: ty
